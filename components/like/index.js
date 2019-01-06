@@ -30,11 +30,11 @@ Component({
             let like = this.properties.like
             let count = this.properties.count
 
-            //like表示点击前的喜欢状态
+            //like表示点击前的是否点赞状态
             count = like?count-1:count+1
             this.setData({
                 count:count,
-                like:!like //改变点击后的like喜欢状态
+                like:!like //改变点击后的like是否点赞状态
             })
             
         }
