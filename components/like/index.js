@@ -36,6 +36,13 @@ Component({
                 count:count,
                 like:!like //改变点击后的like是否点赞状态
             })
+
+            //激活自定义组件的自定义事件
+            let behavior = this.properties.like?'like':'cancel'
+            this.triggerEvent('like',{
+                behavior:behavior
+            },{})
+
             
         }
     }

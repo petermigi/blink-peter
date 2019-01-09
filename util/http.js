@@ -26,7 +26,8 @@ class HTTP{
                 //let code = console.log(typeof(res.statusCode))
                 let code = res.statusCode.toString()               
                 if(code.startsWith('2')){
-                    params.success(res.data)
+                    //传了参数回调函数params.success才调用params.success(res.data)
+                    params.success && params.success(res.data)
                 }
                 else {
                     let error_code = res.data.error_code
