@@ -6,6 +6,7 @@ class ClassicModel extends HTTP{
             url:'classic/latest',
             success:(res)=>{
                 sCallback(res)
+                this._setLatestIndex(res.index)
             }
         })
     }
@@ -24,8 +25,19 @@ class ClassicModel extends HTTP{
     }
 
     isLatest(index){
-        
+        let latestIndex = this._getLatestIndex()
+        return latestIndex==index?true:false
     }
+
+    _setLatestIndex(index){
+        wx.setStorageSync('latest', index)
+    }
+
+    _getLatestIndex(){
+        let index = wx.getStorageSync('latest')
+        return index
+    }
+
 }
 
 export {ClassicModel}
