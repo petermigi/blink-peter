@@ -31,20 +31,23 @@ Page({
     },
 
     onNext:function(event){
-
-    },
+        this._updateClassic('next')
+    },   
 
     onPrevious:function(event) {
-        let index = this.data.classic.index
-        classicModel.getPrevious(index, (res)=>{
-           // console.log(res)
-           this.setData({
-               classic:res,
-               latest:classicModel.isLatest(res.index),
-               first:classicModel.isFirst(res.index)
-           })
-        })
+        this._updateClassic('previous')
     },
+
+    _updateClassic: function (nextOrPrevious) {
+        let index = this.data.classic.index
+        classicModel.getClassic(index, nextOrPrevious, (res) => {  
+          this.setData({
+            classic: res,
+            latest: classicModel.isLatest(res.index),
+            first: classicModel.isFirst(res.index)
+          })
+        })
+      },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
